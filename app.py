@@ -1,21 +1,29 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_login import LoginManager, login_user, login_required, logout_user
-from models import User
 from dotenv import load_dotenv
 from datetime import timedelta
+from database import db, init_app
+from models import User
 
 app = Flask(__name__)
 load_dotenv()
 app.secret_key = os.environ.get("SECRET_KEY")
 app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+    "DATABASE_URL")
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# Initialize the app and database
+init_app(app)
+db.init_app(app)
 login_manager = LoginManager(app)
 
 
 @login_manager.user_loader
 def load_user(user_id):
     # Load the user based on the user_id
-    return User.get(user_id)
+    return User.query.get(user_id)
 
 
 @app.errorhandler(404)
@@ -30,9 +38,7 @@ def login():
         password = request.form['password']
 
         # Retrieve user from the database based on the username
-        # Example implementation:
-        # user = User.query.filter_by(username=username).first()
-        user = User(1, 'example_user', 'example_password')
+        user = User.query.filter_by(username=username).first()
 
         if user and user.check_password(password):
             login_user(user)  # Log in the user

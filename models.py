@@ -1,24 +1,17 @@
 from flask_login import UserMixin
 import bcrypt
 from dotenv import load_dotenv
+from database import db
 import os
 
-# Load environment variables from .env file
+# load environment variables
 load_dotenv()
 
 
-class User(UserMixin):
-    def __init__(self, id, username, password):
-        self.id = id
-        self.username = username
-        self.password = password
-
-    @staticmethod
-    def get(user_id):
-        # Retrieve user from the database based on user_id
-        # Example implementation:
-        # return User.query.get(int(user_id))
-        return None
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    password = db.Column(db.String(255), nullable=False)
 
     def set_password(self, password):
         # Hash, salt, and pepper the provided password
