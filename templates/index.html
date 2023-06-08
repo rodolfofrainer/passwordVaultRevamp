@@ -12,14 +12,17 @@
     <div class="container">
       <h1>Welcome to the Index Page!</h1>
       <p>This is the index page of your website.</p>
-      <button
-        type="button"
-        class="btn btn-primary"
-        data-bs-toggle="modal"
-        data-bs-target="#loginModal"
-      >
-        Login
-      </button>
+      <div class="mb-3">
+        <a class="btn btn-primary" href="{{ url_for('signup') }}">Sign Up</a>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#loginModal"
+        >
+          Login
+        </button>
+      </div>
     </div>
 
     <!-- Login Modal -->
@@ -41,31 +44,8 @@
               aria-label="Close"
             ></button>
           </div>
-          <div class="modal-body">
-            <!-- Add your login form here -->
-            <form method="POST" action="{{ url_for('login') }}">
-              <div class="mb-3">
-                <label for="username" class="form-label">Username</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="username"
-                  name="username"
-                  required
-                />
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="password"
-                  name="password"
-                  required
-                />
-              </div>
-              <button type="submit" class="btn btn-primary">Login</button>
-            </form>
+          <div class="modal-body" id="loginModalBody">
+            <!-- Login form content will be inserted here -->
           </div>
         </div>
       </div>
