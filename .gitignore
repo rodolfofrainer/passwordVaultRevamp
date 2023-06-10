@@ -1,3 +1,4 @@
 /.venv
 /.vscode
 /passwordVaultRevamp/__pycache__
+/vaultApp/__pycache__
