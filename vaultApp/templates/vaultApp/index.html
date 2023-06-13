@@ -7,7 +7,16 @@
   <div class="container">
     <h1>Welcome to Your Password Manager</h1>
     <p>Securely store and manage your passwords</p>
-    <a href="/login" class="btn btn-primary btn-lg">Login</a>
-    <a href="/signup" class="btn btn-secondary btn-lg">Sign Up</a>
+    <div class="d-flex justify-content-center">
+      <form action="{% url 'account_login' %}">
+        {% csrf_token %}
+        <button type="submit" id="btn-login" class="btn btn-primary btn-lg mr-2">Login</button>
+      </form>
+      <form action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-secondary btn-lg">Register</button>
+      </form>
+    </div>
   </div>
 {% endblock %}
+

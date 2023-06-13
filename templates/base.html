@@ -18,24 +18,30 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="btn" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
+            <a class="btn" href="/about">About</a>
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="/dashboard">Dashboard</a>
+              <a class="btn" href="/dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/accounts/logout">Logout</a>
+              <a class="btn" href="/accounts/logout">Logout</a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/signup">Sign Up</a>
+              <form action="{% url 'account_login' %}">
+                {% csrf_token%}
+                <button type="submit" id="btn-login" class="btn btn-primary">Login</button>
+              </form>
+            </div>
+            <div class="nav-item">
+              <form action="{% url 'account_signup' %}">
+                {% csrf_token%}
+                <button type="submit"  class="btn btn-signup">Register</button>
+              </form>
             </li>
           {% endif %}
         </ul>
