@@ -18,55 +18,56 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="btn" href="/">Home</a>
+            <a class="btn btn-link" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="btn" href="/about">About</a>
+            <a class="btn btn-link" href="/about">About</a>
           </li>
           {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="btn" href="/dashboard">Dashboard</a>
+              <a class="btn btn-link" href="/dashboard">Dashboard</a>
             </li>
             <li class="nav-item">
-              <a class="btn" href="/accounts/logout">Logout</a>
+              <a class="btn btn-link" href="/accounts/logout">Logout</a>
             </li>
           {% else %}
             <li class="nav-item">
               <form action="{% url 'account_login' %}">
                 {% csrf_token%}
-                <button type="submit" id="btn-login" class="btn btn-primary">Login</button>
+                <button type="submit" id="btn-login" class="btn btn-primary mr-1">Login</button>
               </form>
-            </div>
-            <div class="nav-item">
+            </li>
+            <li class="nav-item">
               <form action="{% url 'account_signup' %}">
                 {% csrf_token%}
-                <button type="submit"  class="btn btn-signup">Register</button>
+                <button type="submit"  class="btn btn-secondary">Register</button>
               </form>
             </li>
           {% endif %}
         </ul>
       </div>
     </nav>
-    
+  
     {% if user.is_authenticated %}
       <!-- Sidebar visible for authenticated user -->
       <aside class="sidebar">
         <!-- Sidebar content here -->
       </aside>
     {% endif %}
-    
+  
     <main class="container mt-4">
       {% block content %}
       {% endblock %}
     </main>
-    
+  
     <!-- Footer always visible -->
     <footer class="footer mt-auto py-3 bg-light">
       <div class="container text-center">
         <span class="text-muted">&copy; 2023 RF. All rights reserved.</span>
       </div>
     </footer>
-    
+  
     <script src="{% static 'js/script.js' %}"></script>
   </body>
+  
 </html>
