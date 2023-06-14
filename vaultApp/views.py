@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 
 def index_view(request):
+    if request.user.is_authenticated:
+        return render(request, 'vaultApp/index_loggedin.html', {'user': request.user})
     return render(request, 'vaultApp/index.html')
 
 
