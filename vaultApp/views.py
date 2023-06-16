@@ -14,9 +14,9 @@ def about_view(request):
 def vault_item_create_view(request):
     form = VaultItemForm(request.POST or None)
     if form.is_valid():
-        vault_item=form.save(commit=False)
-        vault_item.user = request.user
-        form.save()
+        vault_item = form.save(commit=False)
+        vault_item.vault_item_user_id = request.user.id
+        vault_item.save()
         form = VaultItemForm()
-    context = { 'form': form }
+    context = {'form': form}
     return render(request, 'vaultApp/vault_item_create.html', context)
