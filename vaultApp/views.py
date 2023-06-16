@@ -9,3 +9,6 @@ def index_view(request):
 
 def about_view(request):
     return render(request, 'vaultApp/about.html')
+
+def about_view(request):
+    return render(request, 'vaultApp/about.html')
