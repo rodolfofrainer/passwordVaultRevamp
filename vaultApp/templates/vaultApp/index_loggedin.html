@@ -4,7 +4,9 @@
 
 {% block content %}
 <div class = "container">
-  <h1 class="mt-5">Logged</h1>
+  <a href="{% url 'create_new_item' %}">
+  <button type="button" class="btn btn-primary btn-plus">Add item</button>
+  </a>
 </div>
 {% endblock %}
 

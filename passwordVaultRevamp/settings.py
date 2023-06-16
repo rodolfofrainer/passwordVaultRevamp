@@ -165,3 +165,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 ########## ALLAUTH ##########
 LOGIN_REDIRECT_URL = "/"
+
+AUTH_USER_MODEL = 'vaultApp.VaultUserModel'
