@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from .forms import VaultItemForm
+from .models import VaultItemModel
 
 
 def index_view(request):
     if request.user.is_authenticated:
-        return render(request, 'vaultApp/index_loggedin.html', {'user': request.user})
+        context = {
+                    'user': request.user,
+                    'items': VaultItemModel.objects.filter(vault_item_user_id=request.user.id)
+                    }
+        return render(request, 'vaultApp/index_loggedin.html', context)
     return render(request, 'vaultApp/index.html')
 
 def about_view(request):

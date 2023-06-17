@@ -3,6 +3,39 @@
 {% block title %}Password Manager Revamp{% endblock %}
 
 {% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 class="display-3">Password Manager Revamp</h1>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <td>Website</td>
+            <td>Username</td>
+            <td>Password</td>
+            <td>Actions</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+          <tr>
+            <td>{{ item.vault_item_website }}</td>
+            <td>{{ item.vault_item_username }}</td>
+            <td>{{ item.vault_item_password }}</td>
+            <td>
+              {% comment %} <a href="{% url 'edit_item' item.id %}"> {% endcomment %}
+              <button type="button" class="btn btn-primary">Edit</button>
+              {% comment %} </a> {% endcomment %}
+              {% comment %} <a href="{% url 'delete_item' item.id %}"> {% endcomment %}
+              <button type="button" class="btn btn-danger">Delete</button>
+              {% comment %} </a> {% endcomment %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
 <div class = "container">
   <a href="{% url 'create_new_item' %}">
   <button type="button" class="btn btn-primary btn-plus">Add item</button>
