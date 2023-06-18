@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from .forms import VaultItemForm
 from .models import VaultItemModel
 
@@ -9,6 +9,7 @@ def index_view(request):
                     'user': request.user,
                     'items': VaultItemModel.objects.filter(vault_item_user_id=request.user.id)
                     }
+        
         return render(request, 'vaultApp/index_loggedin.html', context)
     return render(request, 'vaultApp/index.html')
 
@@ -25,3 +26,16 @@ def vault_item_create_view(request):
         form = VaultItemForm()
     context = {'form': form}
     return render(request, 'vaultApp/vault_item_create.html', context)
+
+def vault_item_delete_view(request, vault_item_id):
+    vault_item = get_object_or_404(VaultItemModel, pk=vault_item_id)
+    print(request.user == vault_item.vault_item_user)
+
+    if request.user == vault_item.vault_item_user:
+        if request.method == 'POST':
+            vault_item.delete()
+            return redirect('index')
+        else:
+            return render(request, 'vaultApp/vault_item_delete.html', {'vault_item': vault_item})
+    else:
+        return render(request, 'vaultApp/vault_item_delete.html', {'error_message': 'You do not have permission to delete this item.'})
