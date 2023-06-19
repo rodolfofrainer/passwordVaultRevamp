@@ -23,13 +23,13 @@ def vault_item_create_view(request):
         vault_item = form.save(commit=False)
         vault_item.vault_item_user_id = request.user.id
         vault_item.save()
-        form = VaultItemForm()
+        return redirect('index')
+
     context = {'form': form}
     return render(request, 'vaultApp/vault_item_create.html', context)
 
 def vault_item_delete_view(request, vault_item_id):
     vault_item = get_object_or_404(VaultItemModel, pk=vault_item_id)
-    print(request.user == vault_item.vault_item_user)
 
     if request.user == vault_item.vault_item_user:
         if request.method == 'POST':
