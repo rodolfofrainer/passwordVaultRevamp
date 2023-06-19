@@ -35,7 +35,3 @@ def vault_item_delete_view(request, vault_item_id):
         if request.method == 'POST':
             vault_item.delete()
             return redirect('index')
-        else:
-            return render(request, 'vaultApp/vault_item_delete.html', {'vault_item': vault_item})
-    else:
-        return render(request, 'vaultApp/vault_item_delete.html', {'error_message': 'You do not have permission to delete this item.'})
