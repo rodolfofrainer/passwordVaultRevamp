@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     {% load static %}
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  </head>
-  <body>
+</head>
+<body>
     {% include 'navbar.html' %}
-  
+
     {% comment %} {% if user.is_authenticated %}
-      <!-- Sidebar visible for authenticated user -->
-      <aside class="sidebar">
+    <!-- Sidebar visible for authenticated user -->
+    <aside class="sidebar">
         <!-- Sidebar content here -->
-      </aside>
+    </aside>
     {% endif %} {% endcomment %}
-  
+
     <main class="container mt-4">
-      {% block content %}
-      {% endblock %}
+        {% block content %}
+        {% endblock %}
     </main>
     {% include 'footer.html'%}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'js/script.js' %}"></script>
-  </body>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
 </html>
