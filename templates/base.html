@@ -9,13 +9,6 @@
 <body>
     {% include 'navbar.html' %}
 
-    {% comment %} {% if user.is_authenticated %}
-    <!-- Sidebar visible for authenticated user -->
-    <aside class="sidebar">
-        <!-- Sidebar content here -->
-    </aside>
-    {% endif %} {% endcomment %}
-
     <main class="container mt-4">
         {% block content %}
         {% endblock %}

@@ -23,7 +23,16 @@
               <tr>
                 <td>{{ item.vault_item_website }}</td>
                 <td>{{ item.vault_item_username }}</td>
-                <td>{{ item.vault_item_password }}</td>
+                <td>
+                  <span
+                    onclick="togglePasswordVisibility({{ item.id }})"
+                    id="password{{ item.id }}"
+                    class="password-hidden"
+                    data-password="{{ item.vault_item_password }}"
+                  >
+                    ******
+                  </span>
+                </td>
                 <td>
                   <button type="button" class="btn btn-primary">Edit</button>
                   <button
