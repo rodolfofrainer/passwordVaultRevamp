@@ -32,6 +32,15 @@
                   >
                     ******
                   </span>
+                  <br>
+                  <button
+                    type="button"
+                    class="btn btn-sm btn-secondary hidden copy-password-button"
+                    id="copyButton{{ item.id }}"
+                    onclick="copyPasswordToClipboard({{ item.id }})"
+                  >
+                    Copy
+                  </button>
                 </td>
                 <td>
                   <button type="button" class="btn btn-primary">Edit</button>
@@ -101,4 +110,5 @@
     </a>
   </div>
 </div>
+
 {% endblock %}
