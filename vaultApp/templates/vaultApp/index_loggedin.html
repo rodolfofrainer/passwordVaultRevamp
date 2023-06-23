@@ -11,10 +11,10 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <td>Website</td>
-            <td>Username</td>
-            <td>Password</td>
-            <td>Actions</td>
+            <th>Website</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -24,23 +24,25 @@
                 <td>{{ item.vault_item_website }}</td>
                 <td>{{ item.vault_item_username }}</td>
                 <td>
-                  <span
-                    onclick="togglePasswordVisibility({{ item.id }})"
-                    id="password{{ item.id }}"
-                    class="password-hidden"
-                    data-password="{{ item.vault_item_password }}"
-                  >
-                    ******
-                  </span>
-                  <br>
-                  <button
-                    type="button"
-                    class="btn btn-sm btn-secondary hidden copy-password-button"
-                    id="copyButton{{ item.id }}"
-                    onclick="copyPasswordToClipboard({{ item.id }})"
-                  >
-                    Copy
-                  </button>
+                  <div class="password-container">
+                    <span
+                      onclick="togglePasswordVisibility({{ item.id }})"
+                      id="password{{ item.id }}"
+                      class="password-hidden"
+                      data-password="{{ item.vault_item_password }}"
+                    >
+                      ******
+                    </span>
+                    <br>
+                    <button
+                      type="button"
+                      class="btn btn-sm btn-secondary copy-password-button"
+                      id="copyButton{{ item.id }}"
+                      onclick="copyPasswordToClipboard({{ item.id }})"
+                    >
+                      Copy
+                    </button>
+                  </div>
                 </td>
                 <td>
                   <button type="button" class="btn btn-primary">Edit</button>

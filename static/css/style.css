@@ -1,4 +1,4 @@
-body {
+.body {
   background-color: #f8f9fa;
 }
 
@@ -25,6 +25,14 @@ p {
   cursor: pointer;
 }
 
+.password-container {
+  align-items: center;
+}
+
+.button-container {
+  margin-left: 10px;
+}
 .copy-password-button {
   display: none;
 }
+
